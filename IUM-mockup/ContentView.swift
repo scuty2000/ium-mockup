@@ -13,10 +13,31 @@ struct ContentView: View {
     @State var activeView = "miei_corsi"
     @State var navigationBarTitle = "I Miei Corsi"
     
-    init() {
+    @Binding var subscribedCourses: Array<Course>
+    
+    init(subscribedCourses: Binding<Array<Course>>) {
         
         UINavigationBar.appearance().backgroundColor = .white
         UINavigationBar.appearance().barStyle = .default
+        
+        self._subscribedCourses = subscribedCourses
+        
+    }
+    
+    func getNavigationBarTitle(activeView: String) -> String {
+        
+        switch(activeView) {
+        case("miei_corsi"):
+            return "I Miei Corsi"
+        case("lista_corsi"):
+            return "Ricerca Corsi"
+        case("impostazioni"):
+            return "Impostazioni"
+        case("profile"):
+            return "Profilo"
+        default:
+            return "unknown_view"
+        }
         
     }
     
@@ -34,9 +55,16 @@ struct ContentView: View {
         return NavigationView {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
-                    MainView(showMenu: self.$showMenu)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                        .disabled(self.showMenu ? true : false)
+                    ContainerView(
+                        showMenu: self.$showMenu,
+                        activeView: self.$activeView,
+                        subscribedCourses: self.$subscribedCourses
+                    )
+                        .frame(
+                            width: geometry.size.width,
+                            height: geometry.size.height
+                        )
+                    
                     if(self.showMenu) {
                         MenuView(showMenu: self.$showMenu, activeView: self.$activeView, navigationBarTitle: self.$navigationBarTitle)
                             .frame(width: geometry.size.width/2.3)
@@ -45,7 +73,7 @@ struct ContentView: View {
                 }
                 .gesture(drag)
             }
-            .navigationBarTitle(Text(self.navigationBarTitle), displayMode: .inline)
+            .navigationBarTitle(Text(self.getNavigationBarTitle(activeView: activeView)), displayMode: .inline)
             .navigationBarItems(leading: (
             
                 Button(action: {
@@ -65,19 +93,13 @@ struct ContentView: View {
     }
 }
 
-struct MainView: View {
-    
-    @Binding var showMenu: Bool
-    
-    var body: some View {
-        Text("Sidemenu mockup test")
-    }
-}
-
 struct ContentView_Previews: PreviewProvider {
+    
+    @State static var subscribedCourses = Array<Course>()
+    
     static var previews: some View {
         Group {
-            ContentView()
+            ContentView(subscribedCourses: $subscribedCourses)
                 .previewInterfaceOrientation(.portrait)
         }
     }
