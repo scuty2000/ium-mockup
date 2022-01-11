@@ -10,11 +10,11 @@ import SwiftUI
 struct MyCoursesView: View {
     
     @Binding var activeView: String
-    @Binding var coursesList: [Course]
+    @Binding var coursesList: [Int : Course]
     @Binding var selectedCourseID: Int
     
     var body: some View {
-        if (coursesList.filter{ $0.subscribed }.isEmpty) {
+        if (coursesList.values.filter{ $0.subscribed }.isEmpty) {
             VStack {
                 Text("Non sei iscritto ad alcun corso!")
                     .font(.largeTitle)
@@ -37,15 +37,20 @@ struct MyCoursesView: View {
         } else {
             
             ScrollView {
-                ForEach(self.coursesList.filter{ $0.subscribed }) { course in
-                    CourseRow(course: course)
-                        .background(RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color(red: 32/255, green: 32/255, blue:32/255))
-                                        .shadow(color: .black, radius: 3))
-                    
-                        .padding(.leading)
-                        .padding(.trailing)
-                        .padding(.top, 10)
+                ForEach(self.coursesList.values.filter{ $0.subscribed }.sorted(by: {$0.id < $1.id})) { course in
+                    CourseRow(
+                        activeView: self.$activeView,
+                        coursesList: self.$coursesList,
+                        selectedCourseID: self.$selectedCourseID,
+                        course: course
+                    )
+                    .background(RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color(red: 32/255, green: 32/255, blue:32/255))
+                                    .shadow(color: .black, radius: 3))
+                
+                    .padding(.leading)
+                    .padding(.trailing)
+                    .padding(.top, 10)
                 }
             }
             
@@ -56,11 +61,18 @@ struct MyCoursesView: View {
 
 struct CourseRow: View {
 
+    @Binding var activeView: String
+    @Binding var coursesList: [Int : Course]
+    @Binding var selectedCourseID: Int
+    
     var course: Course
 
     var body: some View {
         Button(action: {
-            print(course.courseName)
+            withAnimation {
+                self.selectedCourseID = course.id
+                self.activeView = "course_info"
+            }
         }) {
             VStack{
                 HStack(alignment: .center) {
@@ -121,20 +133,5 @@ struct CourseRow: View {
             }
             .frame(height: 140, alignment: .leading)
         }
-    }
-}
-
-struct MyCoursesView_Previews: PreviewProvider {
-    
-    @State static var coursesList = Array<Course>()
-    @State static var activeView = "miei_corsi"
-    @State static var selectedCourseID = 0
-    
-    static var previews: some View {
-        MyCoursesView(
-            activeView: $activeView,
-            coursesList: $coursesList,
-            selectedCourseID: $selectedCourseID
-        )
     }
 }

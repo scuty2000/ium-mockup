@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1166136278E3DAE00C02E5C /* CourseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1166135278E3DAE00C02E5C /* CourseInfoView.swift */; };
 		C1199CDF2789C95E0033C460 /* IUM_mockupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1199CDE2789C95E0033C460 /* IUM_mockupApp.swift */; };
 		C1199CE12789C95E0033C460 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1199CE02789C95E0033C460 /* ContentView.swift */; };
 		C1199CE32789C9600033C460 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1199CE22789C9600033C460 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C1166135278E3DAE00C02E5C /* CourseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoView.swift; sourceTree = "<group>"; };
 		C1199CDB2789C95E0033C460 /* IUM-mockup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IUM-mockup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1199CDE2789C95E0033C460 /* IUM_mockupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUM_mockupApp.swift; sourceTree = "<group>"; };
 		C1199CE02789C95E0033C460 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				C1199CEC2789D0AD0033C460 /* MenuView.swift */,
 				C1D20818278B68B20097D6FC /* ContainerView.swift */,
 				C1D2081A278B6BB00097D6FC /* MyCoursesView.swift */,
+				C1166135278E3DAE00C02E5C /* CourseInfoView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				C1199CE12789C95E0033C460 /* ContentView.swift in Sources */,
 				C1D2081B278B6BB00097D6FC /* MyCoursesView.swift in Sources */,
 				C1199CED2789D0AD0033C460 /* MenuView.swift in Sources */,
+				C1166136278E3DAE00C02E5C /* CourseInfoView.swift in Sources */,
 				C1199CDF2789C95E0033C460 /* IUM_mockupApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

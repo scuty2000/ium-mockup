@@ -14,9 +14,9 @@ struct ContentView: View {
     @State var navigationBarTitle = "I Miei Corsi"
     @State var selectedCourseID = 0
     
-    @Binding var coursesList: Array<Course>
+    @Binding var coursesList: [Int : Course]
     
-    init(coursesList: Binding<Array<Course>>) {
+    init(coursesList: Binding<[Int : Course]>) {
         
         UINavigationBar.appearance().backgroundColor = .white
         UINavigationBar.appearance().barStyle = .default
@@ -25,19 +25,23 @@ struct ContentView: View {
         
     }
     
-    func getNavigationBarTitle(activeView: String) -> String {
+    func getNavigationBarTitle(activeView: String) {
         
         switch(activeView) {
-        case("miei_corsi"):
-            return "I Miei Corsi"
-        case("lista_corsi"):
-            return "Ricerca Corsi"
-        case("impostazioni"):
-            return "Impostazioni"
-        case("profile"):
-            return "Profilo"
-        default:
-            return "unknown_view"
+            case("miei_corsi"):
+                self.navigationBarTitle = "I Miei Corsi"
+                return
+            case("lista_corsi"):
+                self.navigationBarTitle = "Ricerca Corsi"
+                return
+            case("impostazioni"):
+                self.navigationBarTitle = "Impostazioni"
+                return
+            case("profile"):
+                self.navigationBarTitle = "Profilo"
+                return
+            default:
+                self.navigationBarTitle =  "unknown_view"
         }
         
     }
@@ -60,7 +64,8 @@ struct ContentView: View {
                         showMenu: self.$showMenu,
                         activeView: self.$activeView,
                         coursesList: self.$coursesList,
-                        selectedCourseID: self.$selectedCourseID
+                        selectedCourseID: self.$selectedCourseID,
+                        navigationBarTitle: self.$navigationBarTitle
                     )
                     .frame(
                         width: geometry.size.width,
@@ -76,29 +81,43 @@ struct ContentView: View {
                 }
                 .gesture(drag)
             }
-            .navigationBarTitle(Text(self.getNavigationBarTitle(activeView: activeView)), displayMode: .inline)
-            .navigationBarItems(leading: (
-            
-                Button(action: {
-                    withAnimation {
-                        self.showMenu.toggle()
-                    }
-                }) {
-                    Image(systemName: "line.horizontal.3")
-                        .imageScale(.large)
-                        .foregroundColor(.gray)
-                }
-            
-            ))
+            .navigationBarTitle(Text(self.navigationBarTitle), displayMode: .inline)
+            .navigationBarItems(leading: self.activeView == "course_info" ? AnyView(self.backButton) : AnyView(self.hamburgerButton))
             
         }
         
     }
+    
+    var hamburgerButton: some View {
+        Button(action: {
+            withAnimation {
+                self.showMenu.toggle()
+            }
+        }) {
+            Image(systemName: "line.horizontal.3")
+                .imageScale(.large)
+                .foregroundColor(.gray)
+        }
+    }
+    
+    var backButton: some View {
+        Button(action: {
+            print("back")
+        }) {
+            Image(systemName: "arrowtriangle.backward.fill")
+                .imageScale(.large)
+                .foregroundColor(.gray)
+            Text("Back")
+                .foregroundColor(.gray)
+        }
+    }
+    
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     
-    @State static var coursesList = Array<Course>()
+    @State static var coursesList: [Int : Course] = [:]
     
     static var previews: some View {
         Group {

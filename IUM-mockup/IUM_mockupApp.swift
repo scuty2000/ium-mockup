@@ -10,25 +10,25 @@ import SwiftUI
 @main
 struct IUM_mockupApp: App {
     
-    @State var coursesList = Array<Course>()
+    @State var coursesList: [Int : Course] = [:]
     
     func testData() {
-        self.coursesList.append(Course(
+        self.coursesList[0] = Course(
             id: 0,
             courseName: "Interazione Uomo-Macchina",
             attendantName: "Prof. Emanuele Panizzi",
             accademicYear: "2021/2022",
             valutation: 4,
             subscribed: true
-        ))
-        self.coursesList.append(Course(
+        )
+        self.coursesList[1] = Course(
             id: 1,
             courseName: "Calcolo Differenziale",
             attendantName: "Prof. Nadia Ansini",
             accademicYear: "2018/2019",
             valutation: 1,
-            subscribed: false
-        ))
+            subscribed: true
+        )
     }
     
     var body: some Scene {
