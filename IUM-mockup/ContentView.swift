@@ -12,15 +12,16 @@ struct ContentView: View {
     @State var showMenu = false
     @State var activeView = "miei_corsi"
     @State var navigationBarTitle = "I Miei Corsi"
+    @State var selectedCourseID = 0
     
-    @Binding var subscribedCourses: Array<Course>
+    @Binding var coursesList: Array<Course>
     
-    init(subscribedCourses: Binding<Array<Course>>) {
+    init(coursesList: Binding<Array<Course>>) {
         
         UINavigationBar.appearance().backgroundColor = .white
         UINavigationBar.appearance().barStyle = .default
         
-        self._subscribedCourses = subscribedCourses
+        self._coursesList = coursesList
         
     }
     
@@ -58,12 +59,14 @@ struct ContentView: View {
                     ContainerView(
                         showMenu: self.$showMenu,
                         activeView: self.$activeView,
-                        subscribedCourses: self.$subscribedCourses
+                        coursesList: self.$coursesList,
+                        selectedCourseID: self.$selectedCourseID
                     )
-                        .frame(
-                            width: geometry.size.width,
-                            height: geometry.size.height
-                        )
+                    .frame(
+                        width: geometry.size.width,
+                        height: geometry.size.height
+                    )
+                    .offset(x: self.showMenu ? geometry.size.width/2.3 : 0)
                     
                     if(self.showMenu) {
                         MenuView(showMenu: self.$showMenu, activeView: self.$activeView, navigationBarTitle: self.$navigationBarTitle)
@@ -95,11 +98,11 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     
-    @State static var subscribedCourses = Array<Course>()
+    @State static var coursesList = Array<Course>()
     
     static var previews: some View {
         Group {
-            ContentView(subscribedCourses: $subscribedCourses)
+            ContentView(coursesList: $coursesList)
                 .previewInterfaceOrientation(.portrait)
         }
     }

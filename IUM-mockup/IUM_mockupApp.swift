@@ -10,24 +10,31 @@ import SwiftUI
 @main
 struct IUM_mockupApp: App {
     
-    @State var subscribedCourses = Array<Course>()
+    @State var coursesList = Array<Course>()
     
     func testData() {
-        self.subscribedCourses.append(Course(
+        self.coursesList.append(Course(
             id: 0,
-            courseName: "Interazione Uomo-Macchina"
+            courseName: "Interazione Uomo-Macchina",
+            attendantName: "Prof. Emanuele Panizzi",
+            accademicYear: "2021/2022",
+            valutation: 4,
+            subscribed: true
         ))
-    }
-    
-    init() {
-        
-        testData()
-        
+        self.coursesList.append(Course(
+            id: 1,
+            courseName: "Calcolo Differenziale",
+            attendantName: "Prof. Nadia Ansini",
+            accademicYear: "2018/2019",
+            valutation: 1,
+            subscribed: false
+        ))
     }
     
     var body: some Scene {
         WindowGroup {
-            ContentView(subscribedCourses: self.$subscribedCourses)
+            ContentView(coursesList: self.$coursesList)
+                .onAppear(perform: self.testData)
         }
     }
 }

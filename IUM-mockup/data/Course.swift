@@ -7,9 +7,14 @@
 
 import Foundation
 
-struct Course {
+struct Course: Identifiable {
     
     var id: Int
     var courseName: String
+    var attendantName: String
+    var accademicYear: String
+    
+    var valutation: Int
+    var subscribed: Bool
     
 }
