@@ -19,7 +19,7 @@ struct IUM_mockupApp: App {
             attendantName: "Prof. Emanuele Panizzi",
             accademicYear: "2021/2022",
             valutation: 4,
-            subscribed: true
+            subscribed: false
         )
         self.coursesList[1] = Course(
             id: 1,
@@ -27,13 +27,13 @@ struct IUM_mockupApp: App {
             attendantName: "Prof. Nadia Ansini",
             accademicYear: "2018/2019",
             valutation: 1,
-            subscribed: true
+            subscribed: false
         )
     }
     
     var body: some Scene {
         WindowGroup {
-            ContentView(coursesList: self.$coursesList)
+            MainView(coursesList: self.$coursesList)
                 .onAppear(perform: self.testData)
         }
     }

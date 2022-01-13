@@ -15,24 +15,30 @@ struct MyCoursesView: View {
     
     var body: some View {
         if (coursesList.values.filter{ $0.subscribed }.isEmpty) {
-            VStack {
-                Text("Non sei iscritto ad alcun corso!")
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
-                    .multilineTextAlignment(.center)
-                Button(action: {
-                    self.activeView = "lista_corsi"
-                }) {
-                    HStack {
-                        Text("Ricerca corsi")
-                        .font(.title2)
-                        Image(systemName: "magnifyingglass")
-                            .imageScale(.large)
+            HStack {
+                Spacer()
+                VStack {
+                    Spacer()
+                    Text("Non sei iscritto ad alcun corso!")
+                        .font(.largeTitle)
+                        .fontWeight(.heavy)
+                        .multilineTextAlignment(.center)
+                    Button(action: {
+                        self.activeView = "lista_corsi"
+                    }) {
+                        HStack {
+                            Text("Ricerca corsi")
+                            .font(.title2)
+                            Image(systemName: "magnifyingglass")
+                                .imageScale(.large)
+                        }
                     }
+                    .buttonStyle(.bordered)
+                    .cornerRadius(8)
+                    .tint(Color(red: 32/255, green: 32/255, blue: 32/255))
+                    Spacer()
                 }
-                .buttonStyle(.bordered)
-                .cornerRadius(8)
-                .tint(Color(red: 32/255, green: 32/255, blue: 32/255))
+                Spacer()
             }
         } else {
             
