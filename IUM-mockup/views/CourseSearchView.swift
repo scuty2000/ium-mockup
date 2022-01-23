@@ -9,64 +9,64 @@ import SwiftUI
 
 struct CourseSearchView: View {
     
-    @Environment(\.dismiss) var dismiss
-    
-    @State var searchString = ""
     
     @Binding var coursesList: [Int : Course]
+
+    @State private var isShowingDetailView = false
+    @State private var subscribedCourse = false
+    @State var selectedCourseID = 0
+    @State var searchString = ""
+    
+    var emptyCourse = Course(
+        id: -1,
+        courseName: "",
+        attendantName: "",
+        accademicYear: "",
+        description: "",
+        valutation: 0,
+        subscribed: false
+    )
     
     var body: some View {
         
-        VStack {
+        NavigationView {
             
-            SearchBar(text: $searchString)
+            ScrollView {
                 
-            ForEach(searchString == "" ? coursesList.values.filter { !$0.subscribed } : coursesList.values.filter { $0.courseName.contains(searchString) && !$0.subscribed }) { course in
-                Text(course.courseName)
+                ForEach(searchResults) { course in
+                        CourseRow(
+                            isShowingDetailView: self.$isShowingDetailView,
+                            selectedCourseID: self.$selectedCourseID,
+                            subscribedCourse: self.$subscribedCourse,
+                            course: course
+                        )
+                            .tag(course.id)
+                }
+                .background(
+                    NavigationLink(
+                        destination: CourseInfoView(subscription: self.subscribedCourse, coursesList: self.$coursesList, course: coursesList[selectedCourseID] ?? emptyCourse),
+                        isActive: $isShowingDetailView
+                    ) { EmptyView() }
+                )
+                .searchable(text: $searchString, placement: .navigationBarDrawer(displayMode: .always))
+                
+                if(searchResults.isEmpty) {
+                    Text("Nessun corso trovato.")
+                }
+                
             }
-            .navigationBarTitle("Courses")
+            .navigationBarTitle("Ricerca corsi")
             
         }
         
     }
-}
-
-struct SearchBar: View {
-    @Binding var text: String
- 
-    @State private var isEditing = false
- 
-    var body: some View {
-        HStack {
- 
-            HStack {
-            Image(systemName: "magnifyingglass")
-                    .padding(.leading, 7)
-            
-            TextField("Search ...", text: $text)
-                .padding(.top,7)
-                .padding(.bottom,7)
-                .padding(.trailing, 25)
-                .onTapGesture {
-                    self.isEditing = true
-                }
-            }
-            .background(Color(.systemGray6))
-            .cornerRadius(8)
-            .padding(25)
- 
-            if isEditing {
-                Button(action: {
-                    self.isEditing = false
-                    self.text = ""
- 
-                }) {
-                    Text("Cancel")
-                }
-                .padding(.trailing, 10)
-                .transition(.move(edge: .trailing))
-                .animation(.default)
-            }
+    
+    var searchResults: [Course] {
+        if searchString.isEmpty {
+            return coursesList.values.filter { !$0.subscribed }.sorted(by: {$0.id < $1.id})
+        } else {
+            return coursesList.values.filter { $0.courseName.lowercased().contains(searchString.lowercased()) && !$0.subscribed }.sorted(by: {$0.id < $1.id})
         }
     }
+    
 }
