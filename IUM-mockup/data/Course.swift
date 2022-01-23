@@ -13,6 +13,9 @@ struct Course: Identifiable {
     var courseName: String
     var attendantName: String
     var accademicYear: String
+    var abbreviatedName: String?
+    
+    var description: String
     
     var valutation: Int
     var subscribed: Bool

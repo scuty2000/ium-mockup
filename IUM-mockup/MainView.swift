@@ -6,14 +6,11 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct MainView: View {
     
-    @State var modalIsPresented = false
-    
-    @State var activeView = ""
-    @State var selectedCourseID = 0
-    @State var navigationBarTitle = ""
+    @State var uiTabarController: UITabBarController?
     
     @Binding var coursesList: [Int : Course]
     
@@ -27,30 +24,24 @@ struct MainView: View {
     }
     
     var body: some View {
-        
-        
-        return NavigationView {
-            GeometryReader { geometry in
-                VStack {
-                    MyCoursesView(activeView: self.$activeView, coursesList: self.$coursesList, selectedCourseID: self.$selectedCourseID)
-                }
+        return TabView {
+                
+            MyCoursesView(coursesList: self.$coursesList)
+            .tabItem {
+                Label("I miei corsi", systemImage: "books.vertical")
             }
-            .navigationBarTitle(Text("I Miei Corsi"), displayMode: .inline)
-            .navigationBarItems(trailing:
-                Button(action: {
-                    self.modalIsPresented.toggle()
-                }) {
-                    Image(systemName: "plus")
-                        .font(Font.title.weight(.bold))
-                        .imageScale(.small)
-                }
-                .foregroundColor(Color(red: 32/255, green: 32/255, blue: 32/255))
-                .sheet(isPresented: self.$modalIsPresented){
-                    CourseSearchView(coursesList: self.$coursesList)
-                })
+
+            CourseSearchView(coursesList: self.$coursesList)
+            .tabItem {
+                Label("Ricerca corsi", systemImage: "magnifyingglass")
+            }
+            
+            Text("Coming s00n")
+            .tabItem {
+                Label("Materiali salvati", systemImage: "bookmark")
+            }
+            
         }
-        
-        
     }
 }
 

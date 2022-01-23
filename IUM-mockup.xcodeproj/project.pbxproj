@@ -7,30 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6345A40E3AFF9DF8FA0D38B /* Pods_IUM_mockup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C83A7258CCD6B37BE7881B /* Pods_IUM_mockup.framework */; };
 		C1166136278E3DAE00C02E5C /* CourseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1166135278E3DAE00C02E5C /* CourseInfoView.swift */; };
 		C1199CDF2789C95E0033C460 /* IUM_mockupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1199CDE2789C95E0033C460 /* IUM_mockupApp.swift */; };
-		C1199CE12789C95E0033C460 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1199CE02789C95E0033C460 /* ContentView.swift */; };
 		C1199CE32789C9600033C460 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1199CE22789C9600033C460 /* Assets.xcassets */; };
 		C1199CE62789C9600033C460 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1199CE52789C9600033C460 /* Preview Assets.xcassets */; };
-		C1199CED2789D0AD0033C460 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1199CEC2789D0AD0033C460 /* MenuView.swift */; };
+		C1684E60279DA5A200467BCC /* CourseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1684E5F279DA5A200467BCC /* CourseRow.swift */; };
 		C1CAE8E5278F1E8C00EF9FDB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CAE8E4278F1E8C00EF9FDB /* MainView.swift */; };
 		C1CAE8E7279089A900EF9FDB /* CourseSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CAE8E6279089A900EF9FDB /* CourseSearchView.swift */; };
-		C1D20819278B68B20097D6FC /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D20818278B68B20097D6FC /* ContainerView.swift */; };
 		C1D2081B278B6BB00097D6FC /* MyCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D2081A278B6BB00097D6FC /* MyCoursesView.swift */; };
 		C1D20820278B6CA40097D6FC /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D2081F278B6CA40097D6FC /* Course.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27C5E4ECC9022AC2EC1EB911 /* Pods-IUM-mockup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IUM-mockup.release.xcconfig"; path = "Target Support Files/Pods-IUM-mockup/Pods-IUM-mockup.release.xcconfig"; sourceTree = "<group>"; };
+		384B21AF311C853971846FEB /* Pods-IUM-mockup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IUM-mockup.debug.xcconfig"; path = "Target Support Files/Pods-IUM-mockup/Pods-IUM-mockup.debug.xcconfig"; sourceTree = "<group>"; };
+		61C83A7258CCD6B37BE7881B /* Pods_IUM_mockup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IUM_mockup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1166135278E3DAE00C02E5C /* CourseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseInfoView.swift; sourceTree = "<group>"; };
 		C1199CDB2789C95E0033C460 /* IUM-mockup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IUM-mockup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1199CDE2789C95E0033C460 /* IUM_mockupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUM_mockupApp.swift; sourceTree = "<group>"; };
-		C1199CE02789C95E0033C460 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C1199CE22789C9600033C460 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1199CE52789C9600033C460 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C1199CEC2789D0AD0033C460 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		C1684E5F279DA5A200467BCC /* CourseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRow.swift; sourceTree = "<group>"; };
 		C1CAE8E4278F1E8C00EF9FDB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C1CAE8E6279089A900EF9FDB /* CourseSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSearchView.swift; sourceTree = "<group>"; };
-		C1D20818278B68B20097D6FC /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		C1D2081A278B6BB00097D6FC /* MyCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoursesView.swift; sourceTree = "<group>"; };
 		C1D2081F278B6CA40097D6FC /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -40,17 +40,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6345A40E3AFF9DF8FA0D38B /* Pods_IUM_mockup.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		890506D879B6CA230255A518 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61C83A7258CCD6B37BE7881B /* Pods_IUM_mockup.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC78D70E9716B0EAFFC94537 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				384B21AF311C853971846FEB /* Pods-IUM-mockup.debug.xcconfig */,
+				27C5E4ECC9022AC2EC1EB911 /* Pods-IUM-mockup.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C1199CD22789C95E0033C460 = {
 			isa = PBXGroup;
 			children = (
 				C1199CDD2789C95E0033C460 /* IUM-mockup */,
 				C1199CDC2789C95E0033C460 /* Products */,
+				AC78D70E9716B0EAFFC94537 /* Pods */,
+				890506D879B6CA230255A518 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,10 +86,10 @@
 		C1199CDD2789C95E0033C460 /* IUM-mockup */ = {
 			isa = PBXGroup;
 			children = (
+				C1684E5E279DA59000467BCC /* objects */,
 				C1D2081C278B6C7D0097D6FC /* data */,
 				C1199CEE2789D0B20033C460 /* views */,
 				C1199CDE2789C95E0033C460 /* IUM_mockupApp.swift */,
-				C1199CE02789C95E0033C460 /* ContentView.swift */,
 				C1CAE8E4278F1E8C00EF9FDB /* MainView.swift */,
 				C1199CE22789C9600033C460 /* Assets.xcassets */,
 				C1199CE42789C9600033C460 /* Preview Content */,
@@ -87,13 +108,19 @@
 		C1199CEE2789D0B20033C460 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				C1199CEC2789D0AD0033C460 /* MenuView.swift */,
-				C1D20818278B68B20097D6FC /* ContainerView.swift */,
 				C1D2081A278B6BB00097D6FC /* MyCoursesView.swift */,
 				C1166135278E3DAE00C02E5C /* CourseInfoView.swift */,
 				C1CAE8E6279089A900EF9FDB /* CourseSearchView.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		C1684E5E279DA59000467BCC /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				C1684E5F279DA5A200467BCC /* CourseRow.swift */,
+			);
+			path = objects;
 			sourceTree = "<group>";
 		};
 		C1D2081C278B6C7D0097D6FC /* data */ = {
@@ -111,9 +138,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1199CE92789C9600033C460 /* Build configuration list for PBXNativeTarget "IUM-mockup" */;
 			buildPhases = (
+				D20D34FB76184F4BAC6F3100 /* [CP] Check Pods Manifest.lock */,
 				C1199CD72789C95E0033C460 /* Sources */,
 				C1199CD82789C95E0033C460 /* Frameworks */,
 				C1199CD92789C95E0033C460 /* Resources */,
+				5053108AD10D07442CF2CA96 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,6 +198,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5053108AD10D07442CF2CA96 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IUM-mockup/Pods-IUM-mockup-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IUM-mockup/Pods-IUM-mockup-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IUM-mockup/Pods-IUM-mockup-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D20D34FB76184F4BAC6F3100 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IUM-mockup-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C1199CD72789C95E0033C460 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -177,12 +248,10 @@
 				C1D20820278B6CA40097D6FC /* Course.swift in Sources */,
 				C1CAE8E5278F1E8C00EF9FDB /* MainView.swift in Sources */,
 				C1CAE8E7279089A900EF9FDB /* CourseSearchView.swift in Sources */,
-				C1D20819278B68B20097D6FC /* ContainerView.swift in Sources */,
-				C1199CE12789C95E0033C460 /* ContentView.swift in Sources */,
 				C1D2081B278B6BB00097D6FC /* MyCoursesView.swift in Sources */,
-				C1199CED2789D0AD0033C460 /* MenuView.swift in Sources */,
 				C1166136278E3DAE00C02E5C /* CourseInfoView.swift in Sources */,
 				C1199CDF2789C95E0033C460 /* IUM_mockupApp.swift in Sources */,
+				C1684E60279DA5A200467BCC /* CourseRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +376,7 @@
 		};
 		C1199CEA2789C9600033C460 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 384B21AF311C853971846FEB /* Pods-IUM-mockup.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -337,6 +407,7 @@
 		};
 		C1199CEB2789C9600033C460 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C5E4ECC9022AC2EC1EB911 /* Pods-IUM-mockup.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

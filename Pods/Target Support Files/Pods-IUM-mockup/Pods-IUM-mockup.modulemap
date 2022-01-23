@@ -1,0 +1,6 @@
+framework module Pods_IUM_mockup {
+  umbrella header "Pods-IUM-mockup-umbrella.h"
+
+  export *
+  module * { export * }
+}
