@@ -63,9 +63,9 @@ struct CourseSearchView: View {
     
     var searchResults: [Course] {
         if searchString.isEmpty {
-            return coursesList.values.filter { !$0.subscribed }.sorted(by: {$0.id < $1.id})
+            return coursesList.values.filter { !$0.subscribed }.sorted(by: {Int($0.accademicYear.split(separator: "/")[0]) ?? 0 > Int($1.accademicYear.split(separator: "/")[0]) ?? 1})
         } else {
-            return coursesList.values.filter { $0.courseName.lowercased().contains(searchString.lowercased()) && !$0.subscribed }.sorted(by: {$0.id < $1.id})
+            return coursesList.values.filter { $0.courseName.lowercased().contains(searchString.lowercased()) && !$0.subscribed }.sorted(by: {Int($0.accademicYear.split(separator: "/")[0]) ?? 0 > Int($1.accademicYear.split(separator: "/")[0]) ?? 1})
         }
     }
     
