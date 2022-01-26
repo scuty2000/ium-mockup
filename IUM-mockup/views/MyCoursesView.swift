@@ -37,13 +37,14 @@ struct MyCoursesView: View {
             if (coursesList.values.filter{ $0.subscribed }.isEmpty) {
                 HStack {
                     Image(systemName: "rectangle.portrait.on.rectangle.portrait.slash")
-                        .font(.system(size: 35, weight: .regular))
+                        .font(.system(size: 35, weight: .semibold))
                         .foregroundColor(.gray)
                     Text("Non sei iscritto ad alcun corso!\nEsplora il catalogo per iniziare.")
-                        .font(.system(size: 20, weight: .regular))
+                        .font(.system(size: 20, weight: .semibold))
                         .foregroundColor(.gray)
-                        .multilineTextAlignment(.trailing)
+                        .multilineTextAlignment(.leading)
                         .padding(.top, 10)
+                        .offset(y: CGFloat(-5))
                 }
                 .navigationTitle("I miei corsi")
                 .navigationBarTitleDisplayMode(.inline)
