@@ -9,8 +9,9 @@ import SwiftUI
 
 struct CourseSearchView: View {
     
-    
+    @Binding var votedReviews: [Int : Int]
     @Binding var coursesList: [Int : Course]
+    @Binding var reviewsList: [Review]
 
     @State private var isShowingDetailView = false
     @State private var subscribedCourse = false
@@ -22,6 +23,10 @@ struct CourseSearchView: View {
         courseName: "",
         attendantName: "",
         accademicYear: "",
+        cfu: "",
+        relativeYear: "",
+        semester: "",
+        channel: "",
         description: "",
         valutation: 0,
         subscribed: false
@@ -44,7 +49,7 @@ struct CourseSearchView: View {
                 }
                 .background(
                     NavigationLink(
-                        destination: CourseInfoView(subscription: self.subscribedCourse, coursesList: self.$coursesList, course: coursesList[selectedCourseID] ?? emptyCourse),
+                        destination: CourseInfoView(subscription: self.subscribedCourse, votedReviews: self.$votedReviews, coursesList: self.$coursesList, reviewsList: self.$reviewsList, course: coursesList[selectedCourseID] ?? emptyCourse),
                         isActive: $isShowingDetailView
                     ) { EmptyView() }
                 )

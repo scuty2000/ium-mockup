@@ -34,22 +34,30 @@ struct CourseRow: View {
                             Spacer()
                         }
                         Text(course.attendantName)
-                            .font(.system(size: 15))
+                            .font(.system(size: 19))
                             .foregroundColor(.gray)
                             .fontWeight(.semibold)
                             .padding(.bottom, 5)
+                        Text("\(course.relativeYear) / \(course.semester), \(course.channel)")
+                            .font(.system(size: 12))
+                            .foregroundColor(.gray)
+                            .fontWeight(Font.Weight.regular)
                         HStack(spacing: 0) {
                             Text("Anno Accademico:")
-                                .font(.system(size: 17))
+                                .font(.system(size: 12))
                                 .foregroundColor(.gray)
-                                .fontWeight(.semibold)
+                                .fontWeight(Font.Weight.regular)
                                 .padding(.trailing, 5)
                             Text(course.accademicYear)
-                                .font(.system(size: 17))
+                                .font(.system(size: 12))
                                 .foregroundColor(.gray)
-                                .fontWeight(.semibold)
+                                .fontWeight(Font.Weight.regular)
                         }
-                        .padding(.top, 10)
+                        Text("\(course.cfu)")
+                            .font(.system(size: 12))
+                            .foregroundColor(.gray)
+                            .fontWeight(Font.Weight.regular)
+                            .padding(.bottom, 5)
                         HStack(alignment: .center, spacing: 0){
                             Text("Valutazione generale:")
                                 .font(.system(size: 17))
@@ -69,6 +77,7 @@ struct CourseRow: View {
                                 }
                             }
                         }
+                        .padding(.top, 10)
 
                     }
                     
@@ -80,7 +89,7 @@ struct CourseRow: View {
                 }
                 .padding()
             }
-            .frame(height: 140, alignment: .leading)
+            .frame(height: 170, alignment: .leading)
         }
         .background(RoundedRectangle(cornerRadius: 8)
                         .fill(Color(red: 32/255, green: 32/255, blue:32/255))
