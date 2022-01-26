@@ -15,6 +15,11 @@ struct Course: Identifiable {
     var accademicYear: String
     var abbreviatedName: String?
     
+    var cfu: String
+    var relativeYear: String
+    var semester: String
+    var channel: String
+    
     var description: String
     
     var valutation: Int

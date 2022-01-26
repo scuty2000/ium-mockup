@@ -14,19 +14,20 @@ struct CourseInfoView: View {
     @State var subscription: Bool
     @State var uiTabarController: UITabBarController?
     
+    @Binding var votedReviews: [Int : Int]
     @Binding var coursesList: [Int : Course]
+    @Binding var reviewsList: [Review]
     
     var course: Course
     
     var body: some View {
-        ScrollView {
+        GeometryReader { geometry in
             VStack() {
                 Text(course.courseName)
                     .font(.system(size: 25))
                     .foregroundColor(.black)
                     .fontWeight(.bold)
-                    .padding(.bottom, 5)
-                    .padding(.top, 5)
+                    .padding(.top, 7)
                 HStack(alignment: .center, spacing: 0){
                     Text(course.attendantName)
                         .font(.system(size: 17))
@@ -59,13 +60,49 @@ struct CourseInfoView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
+                Divider()
+                
                 switch(self.selectedIndex) {
                     case 0:
-                    InformationView(coursesList: self.$coursesList, subscription: self.$subscription, course: course)
+                        InformationView(coursesList: self.$coursesList, subscription: self.$subscription, course: course)
+                    case 2:
+                        ReviewsView(reviewsList: self.$reviewsList, votedReviews: self.$votedReviews, course: course)
                     default:
                         EmptyView()
                 }
                 
+                Spacer()
+                
+                Divider()
+                
+                Button(action: {
+                    subscription = !subscription
+                }){
+                    if(subscription) {
+                        HStack {
+                            Spacer()
+                            Text("Annulla iscrizione")
+                                .fontWeight(.bold)
+                            Spacer()
+                        }
+                        .padding(.top, 15)
+                        .padding(.bottom, 15)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color(red: 32/255, green: 32/255, blue: 32/255), lineWidth: 4))
+                    } else {
+                        HStack {
+                            Spacer()
+                            Text("Iscriviti al corso")
+                                .fontWeight(.bold)
+                            Spacer()
+                        }
+                        .padding(.top, 15)
+                        .padding(.bottom, 15)
+                    }
+                }
+                .tint(subscription ? Color(red: 32/255, green: 32/255, blue: 32/255) : Color.white)
+                .background(subscription ? Color.white : Color(red: 32/255, green: 32/255, blue: 32/255))
+                .cornerRadius(10)
                 
             }
             .padding(.trailing)
@@ -79,11 +116,62 @@ struct CourseInfoView: View {
                         uiTabarController?.tabBar.isHidden = false
                         setSubscription()
                     }
-            }
+        }
     }
     
     func setSubscription() {
         coursesList[course.id]?.subscribed = subscription
+    }
+    
+}
+
+struct ReviewsView: View {
+    
+    @Binding var reviewsList: [Review]
+    @Binding var votedReviews: [Int : Int]
+    
+    var course: Course
+    
+    var body: some View {
+        
+        ScrollView {
+            
+            HStack {
+                Button(action: {
+                    print("add review")
+                }){
+                    HStack(spacing: 2) {
+                        
+                        Image(systemName: "square.and.pencil")
+                            .font(.system(size: 15, weight: .bold))
+                        
+                        Text("Aggiungi Recensione")
+                            .fontWeight(.bold)
+                        
+                    }
+                    .padding(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color(red: 32/255, green: 32/255, blue: 32/255) , lineWidth: 4))
+                }
+                .tint(Color(red: 32/255, green: 32/255, blue: 32/255))
+                .cornerRadius(10)
+                
+                Spacer()
+            }
+            .padding(.top, 5)
+            
+            Divider()
+            
+            ForEach(reviewsList.filter { $0.courseID == course.id }) { review in
+                
+                ReviewRow(review: review, votedReviews: self.$votedReviews)
+                
+                Divider()
+                
+            }
+            
+        }
+        
     }
     
 }
@@ -97,30 +185,39 @@ struct InformationView: View {
     
     var body: some View {
         
-        return VStack {
+        return VStack(alignment: .leading) {
             
-            HStack {
-                Button(action: {
-                    subscription = !subscription
-                }){
-                    if(subscription) {
-                        Text("Annulla iscrizione")
-                            .padding(15)
-                            .overlay(RoundedRectangle(cornerRadius: 13)
-                                    .stroke(Color.red, lineWidth: 2))
-                    } else {
-                        Text("Iscriviti al corso")
-                            .padding(15)
-                    }
+            ScrollView {
+                
+                HStack {
+                    Text("Anno Accademico:")
+                        .font(Font.system(size: 18))
+                        .foregroundColor(Color(red: 100/255, green: 100/255, blue: 100/255))
+                        .fontWeight(.heavy)
+                    Text(course.accademicYear)
+                        .font(Font.system(size: 18))
+                        .foregroundColor(Color(red: 100/255, green: 100/255, blue: 100/255))
+                        .fontWeight(.semibold)
+                    Spacer()
                 }
-                .tint(subscription ? Color.red : Color.white)
-                .background(subscription ? Color.white : Color(red: 32/255, green: 32/255, blue: 32/255))
-                .cornerRadius(13)
-                Spacer()
+                .padding(.bottom, 5)
+                .padding(.top, 5)
+                
+                HStack {
+                    Text("Descrizione:")
+                        .font(Font.system(size: 18))
+                        .foregroundColor(Color(red: 100/255, green: 100/255, blue: 100/255))
+                        .fontWeight(.heavy)
+                    Spacer()
+                }
+                .padding(.bottom, 5)
+                .padding(.top, 5)
+                Text(course.description)
+                
             }
-            .padding(.top, 10)
             
         }
+        .background(Color.white)
         
     }
     

@@ -12,26 +12,30 @@ struct MainView: View {
     
     @State var uiTabarController: UITabBarController?
     
+    @Binding var votedReviews: [Int : Int]
     @Binding var coursesList: [Int : Course]
+    @Binding var reviewsList: [Review]
     
-    init(coursesList: Binding<[Int : Course]>) {
+    init(coursesList: Binding<[Int : Course]>, reviewsList: Binding<[Review]>, votedReviews: Binding<[Int : Int]>) {
         
         UINavigationBar.appearance().backgroundColor = .white
         UINavigationBar.appearance().barStyle = .default
         
         self._coursesList = coursesList
+        self._reviewsList = reviewsList
+        self._votedReviews = votedReviews
         
     }
     
     var body: some View {
         return TabView {
                 
-            MyCoursesView(coursesList: self.$coursesList)
+            MyCoursesView(votedReviews: self.$votedReviews, coursesList: self.$coursesList, reviewsList: self.$reviewsList)
             .tabItem {
                 Label("I miei corsi", systemImage: "books.vertical")
             }
 
-            CourseSearchView(coursesList: self.$coursesList)
+            CourseSearchView(votedReviews: self.$votedReviews, coursesList: self.$coursesList, reviewsList: self.$reviewsList)
             .tabItem {
                 Label("Ricerca corsi", systemImage: "magnifyingglass")
             }
@@ -47,11 +51,13 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     
+    @State static var votedReviews: [Int : Int] = [:]
     @State static var coursesList: [Int : Course] = [:]
+    @State static var reviewsList: [Review] = []
     
     static var previews: some View {
         Group {
-            MainView(coursesList: $coursesList)
+            MainView(coursesList: $coursesList, reviewsList: self.$reviewsList, votedReviews: self.$votedReviews)
                 .previewInterfaceOrientation(.portrait)
         }
     }

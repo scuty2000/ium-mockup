@@ -12,7 +12,11 @@
 		C1199CDF2789C95E0033C460 /* IUM_mockupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1199CDE2789C95E0033C460 /* IUM_mockupApp.swift */; };
 		C1199CE32789C9600033C460 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1199CE22789C9600033C460 /* Assets.xcassets */; };
 		C1199CE62789C9600033C460 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1199CE52789C9600033C460 /* Preview Assets.xcassets */; };
+		C1280D4527A1482000BCB49F /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1280D4427A1482000BCB49F /* Review.swift */; };
+		C1280D4727A15DF700BCB49F /* ReviewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1280D4627A15DF600BCB49F /* ReviewRow.swift */; };
 		C1684E60279DA5A200467BCC /* CourseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1684E5F279DA5A200467BCC /* CourseRow.swift */; };
+		C181D01027A0901B00E1A003 /* corsi.tsv in Resources */ = {isa = PBXBuildFile; fileRef = C181D00F27A0901B00E1A003 /* corsi.tsv */; };
+		C1828CC327A1C24D00C1C263 /* reviews.tsv in Resources */ = {isa = PBXBuildFile; fileRef = C1828CC227A1C24C00C1C263 /* reviews.tsv */; };
 		C1CAE8E5278F1E8C00EF9FDB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CAE8E4278F1E8C00EF9FDB /* MainView.swift */; };
 		C1CAE8E7279089A900EF9FDB /* CourseSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CAE8E6279089A900EF9FDB /* CourseSearchView.swift */; };
 		C1D2081B278B6BB00097D6FC /* MyCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D2081A278B6BB00097D6FC /* MyCoursesView.swift */; };
@@ -28,7 +32,11 @@
 		C1199CDE2789C95E0033C460 /* IUM_mockupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUM_mockupApp.swift; sourceTree = "<group>"; };
 		C1199CE22789C9600033C460 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1199CE52789C9600033C460 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C1280D4427A1482000BCB49F /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		C1280D4627A15DF600BCB49F /* ReviewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRow.swift; sourceTree = "<group>"; };
 		C1684E5F279DA5A200467BCC /* CourseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRow.swift; sourceTree = "<group>"; };
+		C181D00F27A0901B00E1A003 /* corsi.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = corsi.tsv; sourceTree = "<group>"; };
+		C1828CC227A1C24C00C1C263 /* reviews.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = reviews.tsv; sourceTree = "<group>"; };
 		C1CAE8E4278F1E8C00EF9FDB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C1CAE8E6279089A900EF9FDB /* CourseSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSearchView.swift; sourceTree = "<group>"; };
 		C1D2081A278B6BB00097D6FC /* MyCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoursesView.swift; sourceTree = "<group>"; };
@@ -61,7 +69,6 @@
 				384B21AF311C853971846FEB /* Pods-IUM-mockup.debug.xcconfig */,
 				27C5E4ECC9022AC2EC1EB911 /* Pods-IUM-mockup.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -86,6 +93,7 @@
 		C1199CDD2789C95E0033C460 /* IUM-mockup */ = {
 			isa = PBXGroup;
 			children = (
+				C181D00E27A08FF900E1A003 /* resources */,
 				C1684E5E279DA59000467BCC /* objects */,
 				C1D2081C278B6C7D0097D6FC /* data */,
 				C1199CEE2789D0B20033C460 /* views */,
@@ -119,14 +127,25 @@
 			isa = PBXGroup;
 			children = (
 				C1684E5F279DA5A200467BCC /* CourseRow.swift */,
+				C1280D4627A15DF600BCB49F /* ReviewRow.swift */,
 			);
 			path = objects;
+			sourceTree = "<group>";
+		};
+		C181D00E27A08FF900E1A003 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				C1828CC227A1C24C00C1C263 /* reviews.tsv */,
+				C181D00F27A0901B00E1A003 /* corsi.tsv */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 		C1D2081C278B6C7D0097D6FC /* data */ = {
 			isa = PBXGroup;
 			children = (
 				C1D2081F278B6CA40097D6FC /* Course.swift */,
+				C1280D4427A1482000BCB49F /* Review.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -191,8 +210,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C181D01027A0901B00E1A003 /* corsi.tsv in Resources */,
 				C1199CE62789C9600033C460 /* Preview Assets.xcassets in Resources */,
 				C1199CE32789C9600033C460 /* Assets.xcassets in Resources */,
+				C1828CC327A1C24D00C1C263 /* reviews.tsv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,10 +267,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1D20820278B6CA40097D6FC /* Course.swift in Sources */,
+				C1280D4527A1482000BCB49F /* Review.swift in Sources */,
 				C1CAE8E5278F1E8C00EF9FDB /* MainView.swift in Sources */,
 				C1CAE8E7279089A900EF9FDB /* CourseSearchView.swift in Sources */,
 				C1D2081B278B6BB00097D6FC /* MyCoursesView.swift in Sources */,
 				C1166136278E3DAE00C02E5C /* CourseInfoView.swift in Sources */,
+				C1280D4727A15DF700BCB49F /* ReviewRow.swift in Sources */,
 				C1199CDF2789C95E0033C460 /* IUM_mockupApp.swift in Sources */,
 				C1684E60279DA5A200467BCC /* CourseRow.swift in Sources */,
 			);
