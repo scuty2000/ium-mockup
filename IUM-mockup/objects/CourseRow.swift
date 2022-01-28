@@ -81,10 +81,10 @@ struct CourseRow: View {
 
                     }
                     
-                    Image(systemName: "arrow.up.right.square.fill")
-                        .foregroundColor(.white)
-                        .imageScale(.large)
-                        .offset(y: 45)
+//                    Image(systemName: "arrow.up.right.square.fill")
+//                        .foregroundColor(.white)
+//                        .imageScale(.large)
+//                        .offset(y: 45)
                     
                 }
                 .padding()

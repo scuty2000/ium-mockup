@@ -70,7 +70,7 @@ struct CourseSearchView: View {
         if searchString.isEmpty {
             return coursesList.values.filter { !$0.subscribed }.sorted(by: {Int($0.accademicYear.split(separator: "/")[0]) ?? 0 > Int($1.accademicYear.split(separator: "/")[0]) ?? 1})
         } else {
-            return coursesList.values.filter { $0.courseName.lowercased().contains(searchString.lowercased()) && !$0.subscribed }.sorted(by: {Int($0.accademicYear.split(separator: "/")[0]) ?? 0 > Int($1.accademicYear.split(separator: "/")[0]) ?? 1})
+            return coursesList.values.filter { ($0.courseName.lowercased().contains(searchString.lowercased()) || $0.attendantName.lowercased().contains(searchString.lowercased())) && !$0.subscribed }.sorted(by: {Int($0.accademicYear.split(separator: "/")[0]) ?? 0 > Int($1.accademicYear.split(separator: "/")[0]) ?? 1})
         }
     }
     

@@ -59,7 +59,7 @@ struct ReviewRow: View {
                     
                     HStack (spacing: 1) {
                     
-                        if(votedReviews[review.id] == 0 || votedReviews[review.id] == 2) {
+                        if(votedReviews[review.id] == nil || votedReviews[review.id] == 0 || votedReviews[review.id] == 2) {
                             
                             Image(systemName: "arrow.up.square")
                                 .font(Font.system(size: 30))
@@ -91,7 +91,7 @@ struct ReviewRow: View {
                     
                     HStack (spacing: 1) {
                     
-                        if(votedReviews[review.id] == 0 || votedReviews[review.id] == 1) {
+                        if(votedReviews[review.id] == nil || votedReviews[review.id] == 0 || votedReviews[review.id] == 1) {
                         
                             Image(systemName: "arrow.down.square")
                                 .font(Font.system(size: 30))

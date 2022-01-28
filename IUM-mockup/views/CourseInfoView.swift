@@ -65,6 +65,8 @@ struct CourseInfoView: View {
                 switch(self.selectedIndex) {
                     case 0:
                         InformationView(coursesList: self.$coursesList, subscription: self.$subscription, course: course)
+                    case 1:
+                        MaterialView()
                     case 2:
                         ReviewsView(reviewsList: self.$reviewsList, votedReviews: self.$votedReviews, course: course)
                     default:
@@ -125,7 +127,45 @@ struct CourseInfoView: View {
     
 }
 
+struct MaterialView: View {
+    
+    var body: some View {
+        ScrollView {
+            Button(action: {
+                print("not implemented yet")
+            }) {
+                VStack {
+                    
+                    HStack(alignment: .center) {
+                        Spacer()
+                        VStack(alignment: .leading, spacing: 0){
+                            
+                            Text(":(")
+                                .font(.system(size: 20, weight: .black))
+                                .foregroundColor(.white)
+                            
+                        }
+                        Spacer()
+                    }
+                    .padding()
+                }
+                .frame(height: 170, alignment: .leading)
+            }
+            .background(RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(red: 32/255, green: 32/255, blue:32/255))
+                            .shadow(color: .black, radius: 3))
+        
+            .padding(.leading)
+            .padding(.trailing)
+            .padding(.top, 10)
+        }
+    }
+    
+}
+
 struct ReviewsView: View {
+    
+    @State var isWritingReview = false
     
     @Binding var reviewsList: [Review]
     @Binding var votedReviews: [Int : Int]
@@ -138,7 +178,7 @@ struct ReviewsView: View {
             
             HStack {
                 Button(action: {
-                    print("add review")
+                    self.isWritingReview.toggle()
                 }){
                     HStack(spacing: 2) {
                         
@@ -155,6 +195,9 @@ struct ReviewsView: View {
                 }
                 .tint(Color(red: 32/255, green: 32/255, blue: 32/255))
                 .cornerRadius(10)
+                .sheet(isPresented: self.$isWritingReview) {
+                    WriteReview(isWritingReview: self.$isWritingReview, reviewsList: self.$reviewsList, course: self.course)
+                }
                 
                 Spacer()
             }
@@ -162,7 +205,7 @@ struct ReviewsView: View {
             
             Divider()
             
-            ForEach(reviewsList.filter { $0.courseID == course.id }) { review in
+            ForEach(reviewsList.filter { $0.courseID == course.id }.sorted(by: { $0.id > $1.id})) { review in
                 
                 ReviewRow(review: review, votedReviews: self.$votedReviews)
                 
