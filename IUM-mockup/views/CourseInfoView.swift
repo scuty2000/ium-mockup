@@ -14,6 +14,8 @@ struct CourseInfoView: View {
     @State var subscription: Bool
     @State var uiTabarController: UITabBarController?
     
+    @State var isWritingReview = false
+    
     @Binding var votedReviews: [Int : Int]
     @Binding var coursesList: [Int : Course]
     @Binding var reviewsList: [Review]
@@ -68,7 +70,10 @@ struct CourseInfoView: View {
                     case 1:
                         MaterialView()
                     case 2:
-                        ReviewsView(reviewsList: self.$reviewsList, votedReviews: self.$votedReviews, course: course)
+                        ReviewsView(isWritingReview: self.isWritingReview, reviewsList: self.$reviewsList, votedReviews: self.$votedReviews, course: course)
+                        .sheet(isPresented: self.$isWritingReview) {
+                            WriteReview(isWritingReview: self.$isWritingReview, reviewsList: self.$reviewsList, course: self.course)
+                        }
                     default:
                         EmptyView()
                 }
@@ -107,6 +112,7 @@ struct CourseInfoView: View {
                 .cornerRadius(10)
                 
             }
+            .navigationBarItems(trailing: getAddButtonForView())
             .padding(.trailing)
             .padding(.leading)
             .frame(alignment: .top)
@@ -118,11 +124,36 @@ struct CourseInfoView: View {
                         uiTabarController?.tabBar.isHidden = false
                         setSubscription()
                     }
+            
         }
     }
     
     func setSubscription() {
         coursesList[course.id]?.subscribed = subscription
+    }
+    
+    private func getAddButtonForView() -> Button<Image> {
+        switch(self.selectedIndex) {
+            case 1:
+                return Button(action: {
+                    
+                }) {
+                    Image(systemName: "icloud.and.arrow.up")
+                }
+            case 2:
+                return Button(action: {
+                    self.isWritingReview.toggle()
+                    print(self.isWritingReview)
+                }) {
+                    Image(systemName: "square.and.pencil")
+                }
+            default:
+            return Button(action: {
+                
+            }) {
+                Image(systemName: "no-image")
+            }
+        }
     }
     
 }
@@ -165,7 +196,7 @@ struct MaterialView: View {
 
 struct ReviewsView: View {
     
-    @State var isWritingReview = false
+    @State var isWritingReview: Bool
     
     @Binding var reviewsList: [Review]
     @Binding var votedReviews: [Int : Int]
@@ -175,33 +206,6 @@ struct ReviewsView: View {
     var body: some View {
         
         ScrollView {
-            
-            HStack {
-                Button(action: {
-                    self.isWritingReview.toggle()
-                }){
-                    HStack(spacing: 2) {
-                        
-                        Image(systemName: "square.and.pencil")
-                            .font(.system(size: 15, weight: .bold))
-                        
-                        Text("Aggiungi Recensione")
-                            .fontWeight(.bold)
-                        
-                    }
-                    .padding(10)
-                    .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color(red: 32/255, green: 32/255, blue: 32/255) , lineWidth: 4))
-                }
-                .tint(Color(red: 32/255, green: 32/255, blue: 32/255))
-                .cornerRadius(10)
-                .sheet(isPresented: self.$isWritingReview) {
-                    WriteReview(isWritingReview: self.$isWritingReview, reviewsList: self.$reviewsList, course: self.course)
-                }
-                
-                Spacer()
-            }
-            .padding(.top, 5)
             
             Divider()
             
